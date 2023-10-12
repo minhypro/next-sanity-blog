@@ -1,17 +1,16 @@
-import { NavigationMenuDemo } from '@/components/NavBar'
-import React from 'react'
+import React from "react";
 
-// import Footer from '@/components/Footer'
-// import Navbar from '@/components/Navbar'
+import Footer from "@/components/Footer";
+import { NavigationMenuDemo } from "@/components/Navbar/NavBar";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <>
+    <div className="bg-[#53cac8] md:pt-[1px]">
       <NavigationMenuDemo />
-      {children}
-      {/* <Footer /> */}
-    </>
-  )
-}
+      <div className="container">{children}</div>
+      <Footer />
+    </div>
+  );
+};
 
-export default layout
+export default layout;
