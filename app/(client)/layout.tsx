@@ -5,11 +5,13 @@ import { NavigationMenuDemo } from "@/components/Navbar/NavBar";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="bg-[#53cac8] md:pt-[1px]">
-      <NavigationMenuDemo />
-      <div className="container">{children}</div>
+    <>
+      <div className="bg-[#53cac8] md:pt-[1px]">
+        <NavigationMenuDemo />
+        <div className="flex flex-col items-center px-10">{children}</div>
+      </div>
       <Footer />
-    </div>
+    </>
   );
 };
 

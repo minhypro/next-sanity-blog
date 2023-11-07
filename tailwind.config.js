@@ -8,6 +8,15 @@ module.exports = {
     './src/**/*.{ts,tsx}',
 	],
   theme: {
+    screens: {
+      xs: "400px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1220px",
+      "2xl": "1440px",
+      "3xl": "1700px",
+    },
     container: {
       center: true,
       padding: "2rem",
@@ -16,12 +25,19 @@ module.exports = {
       },
     },
     extend: {
+      transitionTimingFunction: {
+        bounce: 'cubic-bezier(.5,2.5,.7,.7)',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        text: {
+          DEFAULT: "var(--text-default)",
+          foreground: "var(--text-heading)",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

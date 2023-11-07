@@ -4,18 +4,21 @@ import Image from "next/image";
 import { urlForImage } from "@/sanity/lib/image";
 
 const ImageComponent = ({ value }: { value: any }) => {
-    console.log(value)
-    console.log(urlForImage({...value}).url(), 'test')
   return (
-    <Image 
-    src={urlForImage(value).url()}
-    alt={value.alt || " "} loading="lazy" />
+    <Image
+      src={urlForImage(value).url()}
+      className="w-full"
+      alt={value.alt || " "}
+      loading="lazy"
+      width={1000}
+      height={1000}
+    />
   );
 };
 
 export const RichTextComponent = {
   types: {
-    image: ImageComponent
+    image: ImageComponent,
   },
   list: {
     // Ex. 1: customizing common list types
@@ -30,7 +33,7 @@ export const RichTextComponent = {
   listItem: {
     // Ex. 1: customizing common list types
     bullet: ({ children }: any) => (
-      <li style={{ listStyleType: "disclosure-closed" }}>{children}</li>
+      <li className="before:color-red-500 before:-ml-2 before:mr-2 before:text-red-500 before:content-['•']" style={{ listStyleType: "none" }}>{children}</li>
     ),
 
     // Ex. 2: rendering custom list items
@@ -64,7 +67,8 @@ export const RichTextComponent = {
         <a
           href={value?.href}
           target={target}
-          rel={target === "_blank" ? "noindex nofollow": ""}
+          rel={target === "_blank" ? "noindex nofollow" : ""}
+          className="underline"
         >
           {children}
         </a>

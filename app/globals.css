@@ -1,10 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
 
 @layer base {
   :root {
+    --text-heading: #333;
+    --text-default: #353a44;
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
@@ -18,16 +19,18 @@
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
     --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    --accent-foreground: 0 84.2% 60.2%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
+    --border: 240 3.7% 15.9%;
     --input: 240 5.9% 90%;
     --ring: 142.1 76.2% 36.3%;
     --radius: 0.5rem;
   }
- 
+
   .dark {
+    --text-heading: #fff;
+    --text-default: #fff;
     --background: 20 14.3% 4.1%;
     --foreground: 0 0% 95%;
     --card: 24 9.8% 10%;
@@ -53,13 +56,22 @@
 @layer base {
   * {
     @apply border-border;
-    @apply box-border
+    @apply box-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
 
-.up-on-hover:hover {
-  transform: translateY(-1px);
+.bounce-in {
+  @apply -translate-x-1 -translate-y-1 border shadow-[2px_2px] hover:translate-x-0 hover:translate-y-0 hover:shadow-none;
+}
+
+.bounce-out {
+  @apply ease-bounce w-full rounded-xl transition-all duration-300 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[4px_4px];
+}
+
+.post-content p {
+  @apply mb-8
 }

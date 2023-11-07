@@ -1,9 +1,9 @@
 import "./globals.css";
 
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Comfortaa } from "next/font/google";
 
-const inter = Inter({ subsets: ["vietnamese"] });
+const inter = Comfortaa({ subsets: ["vietnamese"] });
 
 export const metadata: Metadata = {
   title: "NextJS Sanity Blog",
