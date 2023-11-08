@@ -2,7 +2,7 @@
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 
-import { RichTextComponent } from "@/components/RichTextComponent";
+import { RichTextComponent } from "@/components/RichTextComponent/RichTextComponent";
 import Tag from "@/components/Tag";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { BackgroundOverlay } from "@/components/ui/background-overlay";
@@ -40,7 +40,7 @@ export default async function Post({ params: { slug } }: Props) {
           width={400}
           height={600}
           alt={`${post.title}-poster`}
-          src={post.mainImage}
+          src={post.mainImage?post.mainImage:'/code-snippet.png'}
           quality={80}
         />
 

@@ -51,7 +51,7 @@ export default async function Home() {
                       width={400}
                       height={600}
                       alt={`${post.title}-poster`}
-                      src={post.mainImage}
+                      src={post.mainImage?post.mainImage:'/no-image.png'}
                       quality={80}
                     />
                   </Link>
