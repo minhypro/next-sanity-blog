@@ -70,7 +70,7 @@ const components: INavLink[] = [
 
 export function NavLinks() {
   return (
-    <NavigationMenu className="hidden lg:block">
+    <NavigationMenu className="z-50 hidden lg:block">
       <NavigationMenuList>
         {components.map((component) =>
           component.triggerHref ? (

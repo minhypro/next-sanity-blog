@@ -2,6 +2,7 @@
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 
+import CommentsFacebook from "@/components/CommentsFacebook";
 import { RichTextComponent } from "@/components/RichTextComponent/RichTextComponent";
 import Tag from "@/components/Tag";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -75,6 +76,7 @@ export default async function Post({ params: { slug } }: Props) {
       <div className="post-content z-10 mb-4">
         <PortableText value={post.body} components={RichTextComponent} />
       </div>
+      <CommentsFacebook dataHref={slug} />
     </main>
   );
 }

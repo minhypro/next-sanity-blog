@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { groq } from "next-sanity";
 
+import CommentsFacebook from "@/components/CommentsFacebook";
 import Tag from "@/components/Tag";
 import { BackgroundOverlay } from "@/components/ui/background-overlay";
 import { Button } from "@/components/ui/button";
@@ -84,6 +85,7 @@ export default async function Home() {
             </Card>
           </div>
         ))}
+        <CommentsFacebook dataHref="/"/>
       </div>
     </main>
   );
