@@ -67,11 +67,15 @@
 }
 
 .bounce-in {
-  @apply -translate-x-1 -translate-y-1 border shadow-[2px_2px] hover:translate-x-0 hover:translate-y-0 hover:shadow-none;
+  @apply translate-x-[-2px] translate-y-[-2px] shadow-[2px_2px] hover:translate-x-0 hover:translate-y-0 hover:shadow-none;
 }
 
 .bounce-out {
-  @apply ease-bounce w-full rounded-xl transition-all duration-300 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[4px_4px];
+  @apply transition-all duration-300 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[2px_2px];
+}
+
+.custom-hover:hover > div:first-child {
+  @apply translate-x-[-2px] translate-y-[-2px] shadow-[2px_2px];;
 }
 
 .post-content p {

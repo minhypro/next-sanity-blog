@@ -25,6 +25,9 @@ module.exports = {
       },
     },
     extend: {
+      backgroundImage: {
+        'number-decoration': "url('/number-decoration.svg')",
+      },
       transitionTimingFunction: {
         bounce: 'cubic-bezier(.5,2.5,.7,.7)',
       },

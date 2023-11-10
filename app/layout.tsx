@@ -1,10 +1,10 @@
 import "./globals.css";
 
 import type { Metadata } from "next";
-import { Comfortaa } from "next/font/google";
+import { Lora } from "next/font/google";
 import Script from 'next/script'
 
-const inter = Comfortaa({ subsets: ["vietnamese"] });
+const inter = Lora({ subsets: ["vietnamese"] });
 
 export const metadata: Metadata = {
   title: "NextJS Sanity Blog",

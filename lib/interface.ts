@@ -1,3 +1,10 @@
+export type MainColor = {
+  hex: string;
+  alpha: number;
+  rgb: { g: number; _type: string; a: number; b: number; r: number };
+  hsl: { h: number; _type: string; a: number; l: number; s: number };
+};
+
 export interface IPost {
   title: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -9,12 +16,7 @@ export interface IPost {
   };
   _createdAt: string;
   _updatedAt: string;
-  mainColor: {
-    hex: string;
-    alpha: number;
-    rgb: { g: number; _type: string; a: number; b: number; r: number };
-    hls: { h: number; _type: string; a: number; l: number; s: number };
-  };
+  mainColor: MainColor;
   mainImage: string;
   categories: string[];
   estimatedReadingTime?: number;
@@ -22,4 +24,14 @@ export interface IPost {
   author: {
     name: string;
   };
+}
+
+export interface ITags {
+  title: string;
+  description: string;
+  _id: string;
+  slug: {
+    current: string;
+  };
+  mainColor: MainColor;
 }
