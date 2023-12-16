@@ -41,7 +41,7 @@ export default async function Post({ params: { slug } }: Props) {
           width={400}
           height={600}
           alt={`${post.title}-poster`}
-          src={post.mainImage?post.mainImage:'/code-snippet.png'}
+          src={post.mainImage ? post.mainImage : "/code-snippet.png"}
           quality={80}
         />
 

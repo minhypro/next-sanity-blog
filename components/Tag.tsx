@@ -16,18 +16,15 @@ const defaultColor: MainColor = {
   hsl: {
     a: 1,
     s: 0.3865030674846626,
-    _type: 'hslaColor',
+    _type: "hslaColor",
     h: 211.42857142857144,
-    l: 0.6803921568627451
+    l: 0.6803921568627451,
   },
   hex: "#beadfa",
   rgb: { a: 1, b: 250, r: 190, g: 173, _type: "rgbaColor" },
 };
 
-const Tag = ({
-  title,
-  mainColor = defaultColor,
-}: TagProps) => {
+const Tag = ({ title, mainColor = defaultColor }: TagProps) => {
   return (
     <Button variant="bounce-out" size="sm">
       <span

@@ -2,7 +2,7 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { Lora } from "next/font/google";
-import Script from 'next/script'
+import Script from "next/script";
 
 const inter = Lora({ subsets: ["vietnamese"] });
 
@@ -20,7 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>{children}</body>
-      <Script defer async src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0&appId=723229132582538&autoLogAppEvents=1" />
+      <Script
+        defer
+        async
+        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0&appId=723229132582538&autoLogAppEvents=1"
+      />
     </html>
   );
 }

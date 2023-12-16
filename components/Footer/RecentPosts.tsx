@@ -9,7 +9,7 @@ import { readClient } from "@/sanity/lib/client";
 
 import FooterItem from "./FooterItem";
 
-export const revalidate = 10;
+export const revalidate = 120;
 
 export const RecentPosts: React.FC = async () => {
   const posts = await readClient.fetch(groq`*[_type == "post"]{

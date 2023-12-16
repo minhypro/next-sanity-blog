@@ -13,62 +13,47 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
+import { getCategories } from "@/sanity/lib/actions";
+
+type CategoryItem = {
+  title: string;
+  href: string;
+  description?: string;
+};
 
 interface INavLink {
   triggerText: string;
   triggerHref?: string;
-  items: {
-    title: string;
-    href: string;
-    description: string;
-  }[];
+  items: CategoryItem[];
 }
 
-const components: INavLink[] = [
-  {
-    triggerText: "Home",
-    items: [
-      {
-        title: "Featured post",
-        href: "#featured",
-        description: "Featured posts",
-      },
-      {
-        title: "New post",
-        href: "#new-post",
-        description: "Newest posts here",
-      },
-      {
-        title: "Contact",
-        href: "#contact",
-        description: "Connect with me",
-      },
-    ],
-  },
-  {
-    triggerText: "Categories",
-    items: [
-      {
-        title: "Frontend",
-        href: "/frontend",
-        description: "Sharing about Frontend things",
-      },
-      {
-        title: "Miscellaneous",
-        href: "/misc",
-        description: "Other things that may help",
-      },
-      {
-        title: "Code snippets",
-        href: "/docs/primitives/progress",
-        description: "Code snippets that may help",
-      },
-    ],
-  },
-  { triggerText: "About", items: [], triggerHref: "#about" },
-];
+export async function NavLinks() {
+  const categories = await getCategories();
 
-export function NavLinks() {
+  const components: INavLink[] = [
+    {
+      triggerText: "Trang chủ",
+      items: [
+        {
+          title: "Nổi bật",
+          href: "#featured",
+        },
+        {
+          title: "Bài viết mới",
+          href: "#new-post",
+        },
+        {
+          title: "Liên hệ",
+          href: "#contact",
+        },
+      ],
+    },
+    {
+      triggerText: "Categories",
+      items: categories.map((e) => ({ ...e, href: e.slug })),
+    },
+  ];
+
   return (
     <NavigationMenu className="z-50 hidden lg:block">
       <NavigationMenuList>
@@ -87,7 +72,7 @@ export function NavLinks() {
                 {component.triggerText}
               </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                <ul className="grid gap-3 p-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                   {component.items.map((item) => (
                     <ListItem
                       key={item.title}

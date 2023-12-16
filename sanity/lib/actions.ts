@@ -17,3 +17,14 @@ export const getPost = (slug: string) => {
     "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )}`;
   return readClient.fetch(query);
 };
+
+export const getCategories = (): Promise<
+  Array<{
+    title: string;
+    description: string;
+    slug: string;
+  }>
+> =>
+  readClient.fetch(
+    groq`*[_type == "category"]{title, description, "slug": slug.current}`
+  );

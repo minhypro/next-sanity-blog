@@ -8,5 +8,9 @@ Refractor.registerLanguage(js);
 Refractor.registerLanguage(jsx);
 
 export const CodeBlock = ({ value }: { value: any }) => (
-  <Refractor className="max-w-3xl overflow-x-scroll" language={value.language} value={value.code} />
+  <Refractor
+    className="max-w-3xl overflow-x-scroll"
+    language={value.language}
+    value={value.code}
+  />
 );

@@ -8,10 +8,7 @@ export const BackgroundOverlay = ({
 }: DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>) => {
   return (
     <div
-      className={cn(
-        "absolute inset-0 rounded-xl opacity-25",
-        className
-      )}
+      className={cn("absolute inset-0 rounded-xl opacity-25", className)}
       {...props}
     ></div>
   );

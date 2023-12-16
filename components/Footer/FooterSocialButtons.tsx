@@ -82,7 +82,9 @@ export const FooterSocialButtons: React.FC = async () => {
       {socialInfo?.map((item) => (
         <Link key={item.title} href={item.href}>
           <div className="custom-hover mb-3 flex gap-4">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full border bg-white transition-all duration-300">{item.icon}</div>
+            <div className="flex h-8 w-8 items-center justify-center rounded-full border bg-white transition-all duration-300">
+              {item.icon}
+            </div>
             <div>{item.title}</div>
           </div>
         </Link>

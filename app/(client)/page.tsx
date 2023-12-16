@@ -11,7 +11,7 @@ import { IPost } from "@/lib/interface";
 import { dateConverter } from "@/lib/utils";
 import { readClient } from "@/sanity/lib/client";
 
-export const revalidate = 10;
+export const revalidate = 120;
 
 export default async function Home() {
   const posts = await readClient.fetch(groq`*[_type == "post"]{
