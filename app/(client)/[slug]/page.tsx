@@ -46,11 +46,12 @@ export default async function Post({ params: { slug } }: Props) {
         />
 
         <div className="flex w-full flex-col gap-2 self-center ">
-          <Tag
-            className="max-w-min"
-            title={post.categories ? post.categories[0] : "Miscelanous"}
-            color="violet"
-          />
+          <div className="max-w-min min-w-fit">
+            <Tag
+              title={post.categories ? post.categories[0] : "Miscelanous"}
+              color="violet"
+            />
+          </div>
           <div className="text-xs">
             <span className="ml-2 capitalize">
               {dateConverter(post._createdAt)}

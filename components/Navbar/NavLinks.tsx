@@ -12,8 +12,9 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
-import { getCategories } from "@/sanity/lib/actions";
+import { useCategories } from "@/sanity/lib/hooks";
 
 type CategoryItem = {
   title: string;
@@ -25,10 +26,11 @@ interface INavLink {
   triggerText: string;
   triggerHref?: string;
   items: CategoryItem[];
+  isLoading?: boolean;
 }
 
-export async function NavLinks() {
-  const categories = await getCategories();
+export function NavLinks() {
+  const categories = useCategories();
 
   const components: INavLink[] = [
     {
@@ -36,21 +38,22 @@ export async function NavLinks() {
       items: [
         {
           title: "Nổi bật",
-          href: "#featured",
+          href: "/#featured",
         },
         {
           title: "Bài viết mới",
-          href: "#new-post",
+          href: "/#new-post",
         },
         {
           title: "Liên hệ",
-          href: "#contact",
+          href: "/#contact",
         },
       ],
     },
     {
-      triggerText: "Categories",
-      items: categories.map((e) => ({ ...e, href: e.slug })),
+      isLoading: !categories.length,
+      triggerText: "Chủ đề",
+      items: categories.map((e) => ({ ...e, href: `/category/${e.slug}` })),
     },
   ];
 
@@ -72,16 +75,25 @@ export async function NavLinks() {
                 {component.triggerText}
               </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className="grid gap-3 p-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                  {component.items.map((item) => (
-                    <ListItem
-                      key={item.title}
-                      href={item.href}
-                      title={item.title}
-                    >
-                      {item.description}
-                    </ListItem>
-                  ))}
+                <ul className="grid gap-3 p-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.9fr_1fr]">
+                  {component.isLoading ? (
+                    <>
+                      <Skeleton className="w-full h-[40px] rounded-full" />
+                      <Skeleton className="w-full h-[40px] rounded-full" />
+                      <Skeleton className="w-full h-[40px] rounded-full" />
+                      <Skeleton className="w-full h-[40px] rounded-full" />
+                    </>
+                  ) : (
+                    component.items.map((item) => (
+                      <ListItem
+                        key={item.title}
+                        href={item.href}
+                        title={item.title}
+                      >
+                        {item.description}
+                      </ListItem>
+                    ))
+                  )}
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>

@@ -13,6 +13,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
+        ["no-bounce"]: "",
         ["bounce-in"]:
           "translate-x-[-2px] translate-y-[-2px] shadow-[2px_2px] hover:translate-x-0 hover:translate-y-0 hover:shadow-none",
         ["bounce-out"]:
