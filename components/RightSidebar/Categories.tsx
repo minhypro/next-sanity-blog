@@ -1,18 +1,15 @@
 import Link from "next/link";
 import React from "react";
 
+import { CardWithTitle } from "@/components/CardWithTitle";
 import { getCategories } from "@/sanity/lib/actions";
 
 import Tag from "../Tag";
-import FooterItem from "./FooterItem";
 
-export const revalidate = 120;
-
-export const FooterTags: React.FC = async () => {
+export const Categories: React.FC = async () => {
   const categories = await getCategories();
-
   return (
-    <FooterItem section="Chủ đề">
+    <CardWithTitle title="Chủ đề">
       <div className="flex flex-wrap gap-2">
         {categories?.map((tag) => (
           <Link key={tag._id} href={`/category/${tag.slug.current}`}>
@@ -20,6 +17,6 @@ export const FooterTags: React.FC = async () => {
           </Link>
         ))}
       </div>
-    </FooterItem>
+    </CardWithTitle>
   );
 };

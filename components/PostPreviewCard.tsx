@@ -6,6 +6,7 @@ import Tag from "@/components/Tag";
 import { BackgroundOverlay } from "@/components/ui/background-overlay";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { CATEGORY_SLUG } from "@/lib";
 import { IPost } from "@/lib/interface";
 import { dateConverter } from "@/lib/utils";
 
@@ -29,7 +30,7 @@ export const PostPreviewCard: React.FC<Props> = ({
           />
           <div className="relative grid min-h-[300px] grid-cols-[35%_1fr] gap-8">
             <Image
-              className="border-border h-full w-full rounded-lg border object-cover object-center"
+              className="h-full w-full rounded-lg border border-border object-cover object-center"
               width={400}
               height={600}
               alt={`${post.title}-poster`}
@@ -40,10 +41,14 @@ export const PostPreviewCard: React.FC<Props> = ({
             <div className="flex w-full flex-col gap-2 self-center ">
               <div className="text-xs">
                 {showCategoryTag && (
+                  <Link href={CATEGORY_SLUG + "/" + post.categories[0].slug.current}>
                   <Tag
-                    title={post.categories ? post.categories[0] : "Miscelanous"}
-                    color="violet"
+                    title={
+                      post.categories ? post.categories[0].title : "Miscelanous"
+                    }
+                    mainColor={post.categories ? post.categories[0].mainColor : undefined}
                   />
+                </Link>
                 )}
                 <span className="ml-2 capitalize">
                   {dateConverter(post._createdAt)}

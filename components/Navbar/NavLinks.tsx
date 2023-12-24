@@ -53,7 +53,10 @@ export function NavLinks() {
     {
       isLoading: !categories.length,
       triggerText: "Chủ đề",
-      items: categories.map((e) => ({ ...e, href: `/category/${e.slug}` })),
+      items: categories.map((e) => ({
+        ...e,
+        href: `/category/${e.slug.current}`,
+      })),
     },
   ];
 
@@ -78,10 +81,10 @@ export function NavLinks() {
                 <ul className="grid gap-3 p-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.9fr_1fr]">
                   {component.isLoading ? (
                     <>
-                      <Skeleton className="w-full h-[40px] rounded-full" />
-                      <Skeleton className="w-full h-[40px] rounded-full" />
-                      <Skeleton className="w-full h-[40px] rounded-full" />
-                      <Skeleton className="w-full h-[40px] rounded-full" />
+                      <Skeleton className="h-[40px] w-full rounded-full" />
+                      <Skeleton className="h-[40px] w-full rounded-full" />
+                      <Skeleton className="h-[40px] w-full rounded-full" />
+                      <Skeleton className="h-[40px] w-full rounded-full" />
                     </>
                   ) : (
                     component.items.map((item) => (
@@ -120,7 +123,7 @@ const ListItem = React.forwardRef<
           {...props}
         >
           <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>
         </a>

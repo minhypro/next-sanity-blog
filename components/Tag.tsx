@@ -38,7 +38,7 @@ const defaultColor: MainColor = {
 const Tag = ({
   title,
   mainColor = defaultColor,
-  variant = "no-bounce",
+  variant = "bounce-out",
   className,
   size = "default",
 }: TagProps) => {

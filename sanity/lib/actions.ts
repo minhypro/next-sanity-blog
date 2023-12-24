@@ -1,18 +1,18 @@
 import { groq } from "next-sanity";
 
-import { ICategory } from "@/lib";
+import { ICategories, ICategory, IPost, Slug } from "@/lib";
 
 import { readClient } from "./client";
 
-export const getAllSlugs = () =>
+export const getAllSlugs = () : Promise<{slug: Slug}[]> =>
   readClient.fetch(groq`*[_type == "post"]{slug}`);
 
-export const getPost = (slug: string) => {
+export const getPost = (slug: string) : Promise<IPost> => {
   const query = groq`*[_type == "post" && slug.current == "${slug}"][0]{
     ...,
     "author": author->,
     "authorImage": author->image.asset->url,
-    "categories": categories[]->title,
+    "categories": categories[]->{title, slug, mainColor},
     "mainImage": mainImage.asset->url,
     "numberOfCharacters": length(pt::text(body)),
     "estimatedWordCount": round(length(pt::text(body)) / 5),
@@ -27,7 +27,7 @@ const postPreviewProps = `slug,
   excerpt,
   _createdAt,
   _updatedAt,
-  "categories": categories[]->title,
+  "categories": categories[]->{title, slug, mainColor},
   "mainImage": mainImage.asset->url,
   "numberOfCharacters": length(pt::text(body)),
   "estimatedWordCount": round(length(pt::text(body)) / 5),
@@ -39,15 +39,9 @@ export const getPosts = () => {
   );
 };
 
-export const getCategories = (): Promise<
-  Array<{
-    title: string;
-    description: string;
-    slug: string;
-  }>
-> =>
+export const getCategories = (): Promise<Array<ICategories>> =>
   readClient.fetch(
-    groq`*[_type == "category"]{title, description, "slug": slug.current}`
+    groq`*[_type == "category"]{_id, title, description, slug, mainColor}`
   );
 
 export const getCategory = (slug: string): Promise<ICategory> => {
@@ -61,3 +55,13 @@ export const getCategory = (slug: string): Promise<ICategory> => {
     }`;
   return readClient.fetch(query);
 };
+
+export const getRecentPosts = async (number?: number) =>
+  await readClient.fetch(groq`*[_type == "post"]{
+    slug,
+    _id,
+    title,
+    excerpt,
+    _createdAt,
+    "mainImage": mainImage.asset->url,
+  }[0..${number || 2}] | order(_updatedAt desc)`);

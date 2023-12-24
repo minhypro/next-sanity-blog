@@ -55,7 +55,7 @@ const GithubIcon = (
 
 const socialInfo: SocialType[] = [
   {
-    title: "Faceebook",
+    title: "Facebook",
     href: "https://www.facebook.com/minhy95",
     icon: FacebookIcon,
   },

@@ -5,7 +5,7 @@ import Link from "next/link";
 const StudioNavBar = (props: any) => {
   return (
     <div>
-      <div className="bg-foreground text-background flex gap-2 p-2">
+      <div className="flex gap-2 bg-foreground p-2 text-background">
         <Undo2 />
         <Link href="/">Back to website</Link>
       </div>

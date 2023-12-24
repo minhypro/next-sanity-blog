@@ -22,7 +22,6 @@ const CommentsFacebook = ({ dataHref }: Props) => {
   React.useEffect(() => {
     if (window.FB) {
       window.FB.XFBML.parse();
-      console.log(DOMAIN + dataHref);
     }
   }, [dataHref]);
   return (

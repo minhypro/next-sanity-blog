@@ -15,7 +15,7 @@ export function NavigationMenuDemo() {
 
           <Link
             href="/"
-            className="ease-bounce transition-all hover:translate-y-[-2px]"
+            className="transition-all ease-bounce hover:translate-y-[-2px]"
           >
             <Image alt="Logo" src="/logo-groovy.png" width={160} height={40} />
           </Link>

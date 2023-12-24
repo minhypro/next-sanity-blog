@@ -1,5 +1,6 @@
 type RGBColor = { g: number; _type: string; a: number; b: number; r: number };
 type HSLColor = { h: number; _type: string; a: number; l: number; s: number };
+export type Slug = { current: string; _type: string };
 
 export type MainColor = {
   hex: string;
@@ -14,14 +15,12 @@ export interface IPost {
   body: any;
   excerpt: string;
   _id: string;
-  slug: {
-    current: string;
-  };
+  slug: Slug;
   _createdAt: string;
   _updatedAt: string;
   mainColor: MainColor;
   mainImage: string;
-  categories: string[];
+  categories: {title: string, slug: Slug, mainColor: MainColor}[];
   estimatedReadingTime?: number;
   authorImage: string;
   author: {
@@ -29,13 +28,11 @@ export interface IPost {
   };
 }
 
-export interface ITags {
+export interface ICategories {
   title: string;
   description: string;
   _id: string;
-  slug: {
-    current: string;
-  };
+  slug: Slug;
   mainColor: MainColor;
 }
 

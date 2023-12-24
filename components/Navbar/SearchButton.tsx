@@ -13,7 +13,7 @@ const SearchButton = () => {
   return (
     <Sheet>
       <SheetTrigger>
-        <div className="lg:text-text bg-text border-text hover:text-text lg:hover:text-accent-foreground rounded-full border p-3 text-white transition-all hover:bg-white hover:shadow-[2px_2px] lg:border-none lg:bg-transparent lg:hover:shadow-none">
+        <div className="rounded-full border border-text bg-text p-3 text-white transition-all hover:bg-white hover:text-text hover:shadow-[2px_2px] lg:border-none lg:bg-transparent lg:text-text lg:hover:text-accent-foreground lg:hover:shadow-none">
           <Search width={20} height={20} />
         </div>
       </SheetTrigger>
