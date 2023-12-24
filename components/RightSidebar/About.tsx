@@ -1,15 +1,15 @@
 import React from "react";
 
 import { CardWithTitle } from "@/components/CardWithTitle";
+import { getMetadata } from "@/sanity/lib/actions";
 
-export const About: React.FC = () => {
+export const About: React.FC = async () => {
+  const metaData = await getMetadata()
+
   return (
     <CardWithTitle title="About me">
       <div>
-        Passionate web developer with 3 years of experience in React and Node.
-        Currently pursuing a second bachelor&apos;s in Information Technology.
-        Join me on this coding journey as I share tricks, tips, and insights in
-        Vietnamese.
+        {metaData.about}
       </div>
     </CardWithTitle>
   );

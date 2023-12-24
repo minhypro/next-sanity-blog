@@ -1,6 +1,6 @@
 import { groq } from "next-sanity";
 
-import { ICategories, ICategory, IPost, Slug } from "@/lib";
+import { ICategories, ICategory, IMetadata, IPost, Slug } from "@/lib";
 
 import { readClient } from "./client";
 
@@ -65,3 +65,10 @@ export const getRecentPosts = async (number?: number) =>
     _createdAt,
     "mainImage": mainImage.asset->url,
   }[0..${number || 2}] | order(_updatedAt desc)`);
+
+export const getMetadata = async (): Promise<IMetadata> => {
+  const data = await readClient.fetch(
+    groq`*[_type == "metaData" && published != 0]{..., "authorImage": author->image.asset->url}[0..0]`
+  );
+  return data[0];
+};

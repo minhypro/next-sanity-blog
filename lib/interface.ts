@@ -49,3 +49,12 @@ export interface ICategory {
   posts: IPost[];
   postCount: number;
 }
+
+export interface IMetadata {
+  about: string;
+  description: string;
+  _id: string;
+  published: number;
+  title: string;
+  authorImage: string
+}
