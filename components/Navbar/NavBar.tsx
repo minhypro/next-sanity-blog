@@ -15,9 +15,9 @@ export function NavigationMenuDemo() {
 
           <Link
             href="/"
-            className="transition-all ease-bounce hover:translate-y-[-2px]"
+            className="ease-bounce transition-all hover:translate-y-[-2px]"
           >
-            <Image alt="Logo" src="/logo-groovy.png" width={160} height={40} />
+            <Image alt="Logo" src="/Mikegabyte.svg" width={210} height={40} />
           </Link>
 
           <div className="flex items-center justify-between">

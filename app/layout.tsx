@@ -4,11 +4,17 @@ import type { Metadata } from "next";
 import { Lora } from "next/font/google";
 import Script from "next/script";
 
+import { getMetadata } from "@/sanity/lib/actions";
+
 const inter = Lora({ subsets: ["vietnamese"] });
 
+const metaFromSanity = await getMetadata()
+
+export const revalidate = 120;
+
 export const metadata: Metadata = {
-  title: "NextJS Sanity Blog",
-  description: "NextJs Sanity Blog",
+  title: metaFromSanity.title,
+  description: metaFromSanity.description,
   authors: [{ name: "Mike Le" }],
 };
 
