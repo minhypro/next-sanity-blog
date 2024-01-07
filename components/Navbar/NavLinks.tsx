@@ -34,23 +34,6 @@ export function NavLinks() {
 
   const components: INavLink[] = [
     {
-      triggerText: "Trang chủ",
-      items: [
-        {
-          title: "Nổi bật",
-          href: "/#featured",
-        },
-        {
-          title: "Bài viết mới",
-          href: "/#new-post",
-        },
-        {
-          title: "Liên hệ",
-          href: "/#contact",
-        },
-      ],
-    },
-    {
       isLoading: !categories.length,
       triggerText: "Chủ đề",
       items: categories.map((e) => ({
@@ -66,7 +49,7 @@ export function NavLinks() {
         {components.map((component) =>
           component.triggerHref ? (
             <NavigationMenuItem key={component.triggerText}>
-              <Link href={component.triggerHref} legacyBehavior passHref>
+              <Link href={component.triggerHref}>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   {component.triggerText}
                 </NavigationMenuLink>
@@ -88,19 +71,17 @@ export function NavLinks() {
                     </>
                   ) : (
                     component.items.map((item) => (
-                      <ListItem
-                        key={item.title}
-                        href={item.href}
-                        title={item.title}
-                      >
-                        {item.description}
-                      </ListItem>
+                      <Link href={item.href} key={item.title}>
+                        <ListItem href={item.href} title={item.title}>
+                          {item.description}
+                        </ListItem>
+                      </Link>
                     ))
                   )}
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
-          ),
+          )
         )}
       </NavigationMenuList>
     </NavigationMenu>
@@ -118,7 +99,7 @@ const ListItem = React.forwardRef<
           ref={ref}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className,
+            className
           )}
           {...props}
         >

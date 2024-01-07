@@ -6,6 +6,10 @@
 
 @layer base {
   :root {
+    --color-palette-1: #53cac8;
+    --color-palette-2: #fffacd;
+    --color-palette-3: #F9F7F7;
+    --color-palette-4: #C5DFF8;
     --text-heading: #333;
     --text-default: #353a44;
     --background: 0 0% 100%;
@@ -74,7 +78,7 @@
   @apply transition-all duration-300 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[2px_2px];
 }
 
-.custom-hover:hover > div:first-child {
+.custom-hover:hover>div:first-child {
   @apply translate-x-[-2px] translate-y-[-2px] shadow-[2px_2px];
 }
 

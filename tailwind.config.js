@@ -2,11 +2,11 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   theme: {
     screens: {
       xs: "400px",
@@ -26,12 +26,18 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        'number-decoration': "url('/number-decoration.svg')",
+        "number-decoration": "url('/number-decoration.svg')",
       },
       transitionTimingFunction: {
-        bounce: 'cubic-bezier(.5,2.5,.7,.7)',
+        bounce: "cubic-bezier(.5,2.5,.7,.7)",
       },
       colors: {
+        palette: {
+          [1]: "var(--color-palette-1)",
+          [2]: "var(--color-palette-2)",
+          [3]: "var(--color-palette-3)",
+          [4]: "var(--color-palette-4)",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -92,4 +98,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
